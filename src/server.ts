@@ -17,14 +17,14 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
   app.get('/filteredimage/', 
     async ( req, res ) => {
     let { image_url } = req.query;
-    if( !image_url ) {
+    if (!image_url) {
       return res.status(400)
                 .send(`image url is required`);
     }
     let filteredImage: string; 
     try {
       filteredImage = await filterImageFromURL(image_url);
-    } catch ( error ) {
+    } catch (error) {
       return res.status(415)
                 .send(`Image url not found`);
     }
@@ -38,12 +38,12 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
   // Displays a simple message to the user
   app.get( "/", async ( req, res ) => {
     res.send("try GET /filteredimage?image_url={{}}")
-  } );
+  });
   
 
   // Start the Server
   app.listen( port, () => {
       console.log( `server running http://localhost:${ port }` );
       console.log( `press CTRL+C to stop server` );
-  } );
+  });
 })();
